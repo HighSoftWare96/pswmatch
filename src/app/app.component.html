@@ -1,3 +1,25 @@
 <h1>
   {{title}}
 </h1>
+<h2>
+  My name is {{name}} {{surname}}
+</h2>
+<h3> Please insert the password: </h3>
+<form>
+  <input name = "firstInserted" type = "password" #box1 />
+</form>
+<h3> Please confirm the password: </h3>
+<form>
+  <input name = "secondInserted" type = "password"  (keyup)= "checkPSW(box1.value, box2.value)" #box2   />
+</form>
+<br />
+<div *ngIf="notMatches" >
+  <b style="color: red;"> Passwords doesn't matches! </b>
+</div>
+<div *ngIf="!notMatches">
+  <b style="color:green;"> OK! </b>
+</div>
+<br />
+<div *ngIf="!errors && box2.value != '' && !notMatches" >
+  <button> Proceed > </button>
+</div>
