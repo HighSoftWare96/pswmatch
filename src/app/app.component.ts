@@ -14,11 +14,11 @@ export class AppComponent {
 
   checkPSW(value1: string, value2: string){
     console.log("Inserted something!");
-    if(!value1.match(value2) && this.notMatches == false){
+    if(value1 != value2 && this.notMatches == false){
       this.notMatches = true;
       this.errors = true;
     }
-    else {
+    else if(value1 == value2){
       this.notMatches = false;
       //non ci sono problemi
       this.errors = false;

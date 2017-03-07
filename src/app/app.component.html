@@ -8,12 +8,12 @@
 <form>
   <input name = "firstInserted" type = "password" #box1 />
 <h3> Please confirm the password: </h3>
-  <input name = "secondInserted" type = "password"  (keyup)= "checkPSW(box1.value, box2.value)" #box2   />
+  <input name = "secondInserted" type = "password"  (input)= "checkPSW(box1.value, box2.value)" #box2   />
 </form>
 <br />
 
 <div [ngSwitch]="notMatches">
-  
+
   <div  *ngSwitchCase="true">
       <b style="color: red;"> Passwords doesn't matches! </b>
   </div>
@@ -22,7 +22,7 @@
     <b style="color:green;"> OK! </b>
     <br />
 
-    <button *ngIf="box2.value != ''" > Proceed > </button>
+    <button *ngIf="box2.value != '' && !errors" > Proceed > </button>
   </div>
 
   <!--  caso div vuoto -->
