@@ -11,13 +11,20 @@
   <input name = "secondInserted" type = "password"  (keyup)= "checkPSW(box1.value, box2.value)" #box2   />
 </form>
 <br />
-<div *ngIf="notMatches" >
-  <b style="color: red;"> Passwords doesn't matches! </b>
-</div>
-<div *ngIf="!notMatches">
-  <b style="color:green;"> OK! </b>
-</div>
-<br />
-<div *ngIf="!errors && box2.value != '' && !notMatches" >
-  <button> Proceed > </button>
+
+<div [ngSwitch]="notMatches">
+  
+  <div  *ngSwitchCase="true">
+      <b style="color: red;"> Passwords doesn't matches! </b>
+  </div>
+
+  <div *ngSwitchCase="false">
+    <b style="color:green;"> OK! </b>
+    <br />
+
+    <button *ngIf="box2.value != ''" > Proceed > </button>
+  </div>
+
+  <!--  caso div vuoto -->
+  <div *ngSwitchDefault ></div>
 </div>
